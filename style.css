@@ -1,0 +1,14 @@
+.unit {
+    width: 20vw;
+    height: 30vh;
+    background-color: rgb(238, 230, 245);
+    border-style: solid;
+    border-color: black;
+    float: left;
+    margin: 5%;
+}
+
+.text {
+    font-size: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
