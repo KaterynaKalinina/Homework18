@@ -9,7 +9,7 @@ class Squad {
     renderSquad() {
         const squadContainer = document.querySelector('#squadContainer');
         this._squad.forEach((unit) => {
-            squadContainer.append(unit.renderUnit());
+            unit.renderUnit(squadContainer);
         });
     }
 

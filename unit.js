@@ -5,9 +5,10 @@ class Unit {
         this.distance = this.maxDistance = distance;
     }
 
-    renderUnit() {
+    renderUnit(el) {
         this.containerDiv = document.createElement('div');
         this.containerDiv.classList.add('unit');
+        el.appendChild(this.containerDiv);
 
         this.healthDiv = document.createElement('div');
         this.healthDiv.style.backgroundColor = 'red';
@@ -59,7 +60,6 @@ class Unit {
         this.img.style.marginLeft = '20%';
         this.containerDiv.appendChild(this.img);
 
-        return this.containerDiv;
     }
 
     isReadyToMove() {
