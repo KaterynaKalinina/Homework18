@@ -17,18 +17,7 @@ class Unit {
         this.healthDiv.classList.add('text');
         this.healthDiv.style.width = `${this.health}%`;
 
-        const changeHealthProgress = () => {
-            this.health -= 10;
-            this.healthDiv.style.width = `${this.health}%`;
-            if (this.health === 0) {
-                this.healthDiv.removeEventListener('click', changeHealthProgress);
-                this.distanceDiv.removeEventListener('click', changeDistanceProgress);
-                this.img.style.opacity = 0,75;
-                this.containerDiv.style.color = 'grey';
-            };
-        };
-
-        this.healthDiv.addEventListener('click', changeHealthProgress);
+        this.healthDiv.addEventListener('click', this.changeHealthProgress.bind(this, this.healthDiv, this.containerDiv));
         this.containerDiv.appendChild(this.healthDiv);
 
         this.distanceDiv = document.createElement('div');
@@ -38,12 +27,7 @@ class Unit {
         this.distanceDiv.classList.add('text');
         this.distanceDiv.style.width = `${this.distance}%`;
 
-        const changeDistanceProgress = () => {
-            this.distance -= 10;
-            this.distanceDiv.style.width = `${this.distance}%`;
-        };
-
-        this.distanceDiv.addEventListener('click', changeDistanceProgress);
+        this.distanceDiv.addEventListener('click', this.changeDistanceProgress.bind(this, this.distanceDiv));
         this.containerDiv.appendChild(this.distanceDiv);
 
         this.typeName = document.createElement('p');
@@ -61,6 +45,21 @@ class Unit {
         this.containerDiv.appendChild(this.img);
 
     }
+
+    changeHealthProgress(healthDiv, containerDiv) {
+        this.health -= 10;
+        healthDiv.style.width = `${this.health}%`;
+        if (this.health === 0) {
+            containerDiv.style.pointerEvents = 'none';
+            this.img.style.opacity = 0,75;
+            containerDiv.style.color = 'grey';
+        };
+    };
+
+    changeDistanceProgress(distanceDiv) {
+        this.distance -= 10;
+        distanceDiv.style.width = `${this.distance}%`;
+    };
 
     isReadyToMove() {
         return this.distance > 0;

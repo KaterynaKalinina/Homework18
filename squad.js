@@ -1,15 +1,14 @@
 class Squad {
-    constructor(defaultResources) {
+    constructor(defaultResources, wrapper) {
         this._squad = [];
         this.addResources(defaultResources);
-        this.renderSquad();
+        this.renderSquad(wrapper);
 
     }
 
-    renderSquad() {
-        const squadContainer = document.querySelector('#squadContainer');
+    renderSquad(wrapper) {
         this._squad.forEach((unit) => {
-            unit.renderUnit(squadContainer);
+            unit.renderUnit(wrapper);
         });
     }
 
